@@ -221,7 +221,7 @@ function createInitialPopulation(){
             // the sum of absolute differences between the height of each column
             //(for example, if all the shapes on the grid lie completely flat, then the roughness would equal 0).
             roughness: Math.random() - 0.5,
-            fitness: -1
+
         };
         //add to array
         genomes.push(genome);
@@ -449,7 +449,7 @@ function makeNextMove() {
         let lastState = getState();
         nextShape();
 
-        for(let i= 0; i<possibleMoves.left; i++){
+        for(let i= 0; i<possibleMoves.length; i++){
             let nextMove = getHighestRatedMove(getAllPossibleMoves());
             //add that rating to an array of highest rates moves
             possibleMoves[i].rating += nextMove.rating;
@@ -920,30 +920,6 @@ function getHoles() {
     }
     applyShape();
     return holes;
-}
-
-function getHolesArray() {
-    // Returns an array that replaces all the holes in the grid with -1
-
-    let array = clone(grid);
-    removeShape();
-    let peaks = [20,20,20,20,20,20,20,20,20,20];
-    for (let row = 0; row < grid.length; row++) {
-        for (let col = 0; col < grid[row].length; col++) {
-            if (grid[row][col] !== 0 && peaks[col] === 20) {
-                peaks[col] = row;
-            }
-        }
-    }
-    for (let x = 0; x < peaks.length; x++) {
-        for (let y = peaks[x]; y < grid.length; y++) {
-            if (grid[y][x] === 0) {
-                array[y][x] = -1;
-            }
-        }
-    }
-    applyShape();
-    return array;
 }
 
 function getRoughness() {
