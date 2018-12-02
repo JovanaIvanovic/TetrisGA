@@ -744,7 +744,6 @@ function generateBag() {
 
 function reset() {
     //Resets the game
-    //CHECK MOVES DA LI MISLI NA MOVES TAKEN???
     score = 0;
     grid = [[0,0,0,0,0,0,0,0,0,0],
         [0,0,0,0,0,0,0,0,0,0],
